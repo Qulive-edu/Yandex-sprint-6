@@ -6,13 +6,15 @@ export class Api {
       if (res.ok) {
         return res.json();
       }
-      return Promise.reject(`Ошибка: ${res.status}`);
+      return Promise.reject(`Error: ${res.status}`);
     });
   }
 
+   // Работа с пользователем
+
   getUserInfo() {
     return fetch(`${this._serverURL}/users/me`, {
-      headers: this._headers 
+      headers: this._headers
     })
       .then((res) => this._handlePromiseReturn(res));
   }
@@ -40,6 +42,8 @@ export class Api {
       .then((res) => this._handlePromiseReturn(res));
   }
 
+  // Работа с карточками
+
   getCards() {
     return fetch(`${this._serverURL}/cards`, {
       headers: this._headers
@@ -61,7 +65,7 @@ export class Api {
 
   deleteCard(cardID) {
     return fetch(`${this._serverURL}/cards/${cardID}`, {
-      method: 'DELETE', 
+      method: 'DELETE',
       headers: this._headers
     });
   }
@@ -74,7 +78,6 @@ export class Api {
       .then((res) => this._handlePromiseReturn(res));
   }
 
-  
   deleteLike(cardID) {
     return fetch(`${this._serverURL}/cards/${cardID}/likes`, {
       method: 'DELETE',

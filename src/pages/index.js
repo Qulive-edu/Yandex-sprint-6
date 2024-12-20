@@ -15,7 +15,6 @@ const api = new Api(apiSettings);
 
 let currentUser = '';
 
-
 Promise.all([api.getUserInfo(), api.getCards()])
   .then((res) => {
     currentUser = res[0]._id;
@@ -26,11 +25,14 @@ Promise.all([api.getUserInfo(), api.getCards()])
   .catch((err) => {
     console.log(err);
   });
+
 const sectionPhotoCards = new Section({
   renderer: (item) => {
     sectionPhotoCards.addItem(copyCard(item, currentUser))
   }
 }, '.photo-cards');
+
+// Профиль пользователя
 
 const formProfileEdit = document.querySelector(".popup_edit_profile " + validationSettings.formSelector);
 
@@ -106,6 +108,8 @@ const avatarForm = new PopupWithForm(
         })
     }
   })
+
+// Карточки изображений
 
 const formNewPlace = document.querySelector(".popup_new-place " + validationSettings.formSelector);
 
@@ -190,6 +194,7 @@ profileEditButton.addEventListener('click', function () {
   profileEditValidator.switchSubmitButton();
 })
 
+
 buttonAddPlace.addEventListener('click', function () {
   addPhotoForm.open();
   newPlaceValidator.validateInputs();
@@ -203,6 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
   avatarEditValidator.enableValidation()
 
   popupImage.setEventListeners();
+
   profileForm.setEventListeners();
 
   popupImageDelete.setEventListeners();
