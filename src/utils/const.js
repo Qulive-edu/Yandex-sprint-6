@@ -2,7 +2,7 @@
  * @type {{headers: {authorization: string, "Content-Type": string}, serverURL: string}}
  */
 export const apiSettings = {
-  serverURL: 'https://mesto.nomoreparties.co/v1/frontend-st-cohort-201',
+  serverURL: 'https://mesto.nomoreparties.co/v1/frontend-apf-cohort-202',
   headers: {
     // Токен авторизации для идентификации пользователя
     authorization: '57836a85-196a-4809-ad30-c62549a39de6',
